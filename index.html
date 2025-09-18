@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+  <title>SmartShop – Product Explorer</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+ 
+
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="logo">SmartShop</div>
+  
+    <!-- Hamburger menu for mobile -->
+    <div class="hamburger" id="hamburger">&#9776;</div>
+  
+    <nav class="nav-links" id="navLinks">
+      <input id="search" type="search" placeholder="Search products..." aria-label="search">
+  
+      <select id="categoryFilter">
+        <option value="">All categories</option>
+      </select>
+  
+      <select id="sortBy">
+        <option value="">Sort</option>
+        <option value="price:asc">Price ↑</option>
+        <option value="price:desc">Price ↓</option>
+        <option value="rating:desc">Rating ↓</option>
+        <option value="rating:asc">Rating ↑</option>
+        <option value="discount:desc">Discount ↓</option>
+        <option value="discount:asc">Discount ↑</option>
+      </select>
+  
+      <button id="clearFilters">Clear</button>
+      <button id="modeToggle" class="mode-btn">🌙 Dark Mode</button>
+  
+      <div class="bar">
+        <div class="chip">Favs <span id="favCount" class="badge">0</span></div>
+        <div class="chip">Cart <span id="cartCount" class="badge">0</span></div>
+      </div>
+    </nav>
+  </header>
+
+<div id="heroSlider" class="carousel slide custom-slider p-5" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <!-- First Slide: Traditional Wear -->
+    <div class="carousel-item active">
+      <img src="assets/images/Traditional_Wear1.webp" alt="Traditional Wear 1">
+    </div>
+    <div class="carousel-item">
+      <img src="assets/images/Traditional_Wear2.webp" alt="Traditional Wear 2">
+    </div>
+    <div class="carousel-item">
+      <img src="assets/images/Traditional_Wear3.webp" alt="Traditional Wear 3">
+    </div>
+  </div>
+</div>
+
+
+  <!-- Controls -->
+ 
+  <!-- <button class="carousel-control-prev" type="button" data-bs-target="#heroSlider" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"
+      style="background-color: #c39555; color: white; border-radius: 50%; padding: 20px;">
+    </span>
+  </button>
+  
+  <button class="carousel-control-next" type="button" data-bs-target="#heroSlider" data-bs-slide="next">
+    <span class="carousel-control-next-icon"
+      style="background-color: #a28153; color: white; border-radius: 50%; padding: 20px;">
+    </span>
+  </button> -->
+
+<!-- </div> -->
+
+
+
+
+  <main>
+    <div id="status"></div> <!-- used for errors / messages -->
+    <div id="products" class="grid"></div> <!-- product cards inserted here -->
+    <div id="sentinel" style="height:1px"></div> <!-- infinite scroll trigger -->
+  </main>
+
+<section class="container my-5">
+  <h2 class="review_heading text-center mb-4">Customer Reviews</h2>
+
+  <div id="reviewCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-3 mb-3">
+            <div class="card shadow-sm h-100">
+              <div class="card-body text-center">
+        
+                <h5 class="card-title">Aastha Dixit</h5>
+                <p class="text-warning mb-1">⭐⭐⭐⭐⭐</p>
+                <p class="card-text">“Amazing shopping experience! The quality of the products is really good and
+                  delivery was fast.”</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-3 mb-3">
+            <div class="card shadow-sm h-100">
+              <div class="card-body text-center">
+  
+                <h5 class="card-title">Rahul Sharma</h5>
+                <p class="text-warning mb-1">⭐⭐⭐⭐</p>
+                <p class="card-text">“Great collection of products. I found exactly what I was looking for. Will
+                  definitely shop again!”</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-3 mb-3">
+            <div class="card shadow-sm h-100">
+              <div class="card-body text-center">
+        
+                <h5 class="card-title">Sneha Kapoor</h5>
+                <p class="text-warning mb-1">⭐⭐⭐⭐⭐</p>
+                <p class="card-text">“Super happy with the purchase! The website is easy to use and checkout was
+                  seamless.”</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-3 mb-3">
+            <div class="card shadow-sm h-100">
+              <div class="card-body text-center">
+                
+                <h5 class="card-title">Neha Verma</h5>
+                <p class="text-warning mb-1">⭐⭐⭐⭐⭐</p>
+                <p class="card-text">“Excellent customer service and easy checkout. The dark/light mode feature is a
+                  cool touch!”</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-3 mb-3">
+            <div class="card shadow-sm h-100">
+              <div class="card-body text-center">
+            
+                <h5 class="card-title">Priya Mehta</h5>
+                <p class="text-warning mb-1">⭐⭐⭐⭐⭐</p>
+                <p class="card-text">“I loved the kurtas I bought! The fabric quality and colors were exactly as shown.”
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-3 mb-3">
+            <div class="card shadow-sm h-100">
+              <div class="card-body text-center">
+                
+                <h5 class="card-title">Amit Kumar</h5>
+                <p class="text-warning mb-1">⭐⭐⭐⭐</p>
+                <p class="card-text">“Smooth shopping experience. Delivery was quick and packaging was neat.”</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+
+    </div>
+
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"
+        style="background-color:#c39555; border-radius:50%; padding:15px;"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"
+        style="background-color:#a28153; border-radius:50%; padding:15px;"></span>
+    </button>
+  </div>
+</section>
+
+
+<footer>
+  <!-- Left side: Social icons -->
+  
+  <div class="footer-left">
+    <span>Follow us:</span>
+    <a href="https://facebook.com" target="_blank" title="Facebook" aria-label="Facebook" class="social-icon">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://twitter.com" target="_blank" title="Twitter" aria-label="Twitter" class="social-icon">
+      <i class="fab fa-twitter"></i>
+    </a>
+    <a href="https://instagram.com" target="_blank" title="Instagram" aria-label="Instagram" class="social-icon">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://linkedin.com" target="_blank" title="LinkedIn" aria-label="LinkedIn" class="social-icon">
+      <i class="fab fa-linkedin-in"></i>
+    </a>
+  </div>
+
+
+  <!-- Right side: Links -->
+  <div class="footer-right">
+    <a href="index.html">Home</a>
+    <a href="faq.html">FAQs</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="about.html">About Us</a>
+    
+  </div>
+</footer>
+
+
+  <script src="app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+ 
+</body>
+</html>

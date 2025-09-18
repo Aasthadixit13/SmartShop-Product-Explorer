@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+  <title>Contact Us || SmartShop</title>
+  <link rel="stylesheet" href="style.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+</head>
+
+<body>
+
+    <header class="site-header">
+      <div class="logo">SmartShop</div>
+    
+      <!-- Hamburger menu for mobile -->
+      <div class="hamburger" id="hamburger">&#9776;</div>
+    
+      <nav class="nav-links" id="navLinks">
+        <input id="search" type="search" placeholder="Search products..." aria-label="search">
+    
+        <select id="categoryFilter">
+          <option value="">All categories</option>
+        </select>
+    
+        <select id="sortBy">
+          <option value="">Sort</option>
+          <option value="price:asc">Price ↑</option>
+          <option value="price:desc">Price ↓</option>
+          <option value="rating:desc">Rating ↓</option>
+          <option value="rating:asc">Rating ↑</option>
+          <option value="discount:desc">Discount ↓</option>
+          <option value="discount:asc">Discount ↑</option>
+        </select>
+    
+        <button id="clearFilters">Clear</button>
+        <button id="modeToggle" class="mode-btn">🌙 Dark Mode</button>
+    
+        <div class="bar">
+          <div class="chip">Favs <span id="favCount" class="badge">0</span></div>
+          <div class="chip">Cart <span id="cartCount" class="badge">0</span></div>
+        </div>
+      </nav>
+    </header>
+
+
+
+
+  <main>
+  <div class="d-flex justify-content-center align-items-center">
+    
+      
+    <form class="form">
+      <p class="title">Register</p>
+      
+      
+    <label>
+      <input required="" placeholder="" type="text" class="input">
+      <span>Fullname</span>
+    </label>
+      <label>
+        <input required="" placeholder="" type="email" class="input">
+        <span>Email</span>
+      </label>
+    
+      <label>
+        <input required type="number" class="input" placeholder="">
+        <span>Number</span>
+      </label>
+      
+      <label>
+        <input required type="text" class="input" placeholder="">
+        <span>Address</span>
+      </label>
+      
+      <label>
+        <textarea required class="input" placeholder=""></textarea>
+        <span>Message</span>
+      </label>
+
+      <button class="submit">Submit</button>
+      
+    </form>
+    
+
+</div>
+
+
+  </main>
+
+
+<footer>
+  <!-- Left side: Social icons -->
+
+  <div class="footer-left">
+    <span>Follow us:</span>
+    <a href="https://facebook.com" target="_blank" title="Facebook" aria-label="Facebook" class="social-icon">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://twitter.com" target="_blank" title="Twitter" aria-label="Twitter" class="social-icon">
+      <i class="fab fa-twitter"></i>
+    </a>
+    <a href="https://instagram.com" target="_blank" title="Instagram" aria-label="Instagram" class="social-icon">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://linkedin.com" target="_blank" title="LinkedIn" aria-label="LinkedIn" class="social-icon">
+      <i class="fab fa-linkedin-in"></i>
+    </a>
+  </div>
+
+
+  <!-- Right side: Links -->
+  <div class="footer-right">
+    <a href="index.html">Home</a>
+    <a href="faq.html">FAQs</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="about.html">About Us</a>
+
+  </div>
+</footer>
+
+
+
+  <script src="app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+ 
+</body>
+
+</html>
