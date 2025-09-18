@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+  <title>SmartShop – Product Explorer</title>
+  
+
+
+</head>
+  <style>
+    body {
+      font-family: Inter, system-ui, Arial;
+      margin: 0;
+      padding: 20px;
+      background: #f6f7fb;
+      color: #111;
+    }
+
+    .card {
+      max-width: 430px;
+      /* height: 550px; */
+      margin:40px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(12, 12, 12, 0.06);
+    }
+
+    img {
+      max-width: 30%;
+      /* height: auto; */
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin: 10px 0;
+    }
+
+    .price {
+      font-size: 18px;
+      font-weight: 700;
+      color: #a37a42;
+      margin: 5px 0;
+    }
+
+    .meta {
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    p {
+      line-height: 1.5;
+      margin: 10px 0;
+    }
+
+    button {
+      padding: 10px 14px;
+      border: none;
+      border-radius: 8px;
+      background: #a37a42;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="product" class="card">Loading...</div>
+
+  <script>
+    async function loadProduct() {
+      const API = 'https://fakestoreapi.com/products';
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+
+      console.log("Product ID from URL:", id); // 🐞 Debug
+
+      if (!id) {
+        document.getElementById('product').innerHTML = "<p>❌ No product selected.</p>";
+        return;
+      }
+
+      try {
+        const res = await fetch(`${API}/${id}`);
+        if (!res.ok) throw new Error("Product not found");
+        const product = await res.json();
+
+        console.log("Fetched product:", product); // 🐞 Debug
+
+        document.getElementById('product').innerHTML = `
+          <img src="${product.image}" alt="${product.title}">
+          <h1>${product.title}</h1>
+          <p class="price">₹${(product.price * 80).toFixed(2)} INR</p>
+          <p class="meta">⭐ ${product.rating?.rate || 0} (${product.rating?.count || 0} reviews)</p>
+          <p><strong>Category:</strong> ${product.category}</p>
+          <p>${product.description}</p>
+          <button onclick="window.location.href='index.html'">← Back to Shop</button>
+        `;
+      } catch (err) {
+        document.getElementById('product').innerHTML = `<p>⚠️ Error: ${err.message}</p>`;
+        console.error("Error loading product:", err);
+      }
+    }
+
+    loadProduct();
+  </script>
+</body>
+
+</html>
