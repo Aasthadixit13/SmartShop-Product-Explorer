@@ -513,3 +513,28 @@ footer{
   }
 }
 
+#products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.product-actions .btn{
+  background: #c39555;
+    color: #fff;
+    border: #c39555;
+}
+.product-actions .btn:hover {
+  background: #a37a42;
+  color: #fff;
+  border: #a37a42;
+}
