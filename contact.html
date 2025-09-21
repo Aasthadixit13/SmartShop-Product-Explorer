@@ -23,20 +23,21 @@
       <div class="hamburger" id="hamburger">&#9776;</div>
     
       <nav class="nav-links" id="navLinks">
+    
         <input id="search" type="search" placeholder="Search products..." aria-label="search">
     
         <select id="categoryFilter">
           <option value="">All categories</option>
+          <option value="electronics">Electronics</option>
+          <option value="jewelery">Jewelery</option>
+          <option value="men's clothing">Men's clothing</option>
+          <option value="women's clothing">Women's clothing</option>
         </select>
     
-        <select id="sortBy">
-          <option value="">Sort</option>
-          <option value="price:asc">Price ↑</option>
-          <option value="price:desc">Price ↓</option>
-          <option value="rating:desc">Rating ↓</option>
-          <option value="rating:asc">Rating ↑</option>
-          <option value="discount:desc">Discount ↓</option>
-          <option value="discount:asc">Discount ↑</option>
+        <select id="sort">
+          <option value="">Sort by price</option>
+          <option value="low">Low to High</option>
+          <option value="high">High to Low</option>
         </select>
     
         <button id="clearFilters">Clear</button>
@@ -48,7 +49,6 @@
         </div>
       </nav>
     </header>
-
 
 
 
